@@ -31,3 +31,14 @@ client.on('messageCreate', async message => {
 });
 
 client.login(process.env.TOKEN);
+
+
+Bun.serve({
+    routes: {
+        "/": {
+            GET: () => {
+                return new Response("Hello");
+            },
+        },
+    },
+})
