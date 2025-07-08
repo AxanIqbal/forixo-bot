@@ -34,6 +34,7 @@ client.login(process.env.TOKEN);
 
 
 Bun.serve({
+    port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
     routes: {
         "/": {
             GET: () => {
