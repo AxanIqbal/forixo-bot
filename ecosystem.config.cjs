@@ -3,7 +3,8 @@ require("dotenv").config();
 module.exports = {
     apps: [{
         name: "forixo-discord",
-        script: "./index.js",
+        script: "index.ts",
+        interpreter: "bun",
         watch: true,
         ignore_watch: [
             "node_modules",
@@ -12,6 +13,7 @@ module.exports = {
         ],
         env: {
             ...process.env,
+            PATH: `${process.env.HOME}/.bun/bin:${process.env.PATH}`,
         }
     }]
 }
