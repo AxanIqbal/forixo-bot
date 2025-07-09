@@ -12,7 +12,8 @@
     "prepare": "bunx husky install"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "dotenv": "^17.1.0"
   },
   "peerDependencies": {
     "typescript": "^5"
