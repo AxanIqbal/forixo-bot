@@ -2,7 +2,12 @@ import {Client, GatewayIntentBits, Partials,MessageType} from "discord.js";
 import axios from "axios";
 
 const client = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers
+    ],
     partials: [Partials.Message], // allow fetching partial messages
 })
 
@@ -42,6 +47,7 @@ client.on('messageCreate', async message => {
             userId: message.author.id,
             username: message.author.username,
             name: message.author.displayName,
+            roles: message.member?.roles.cache.map(role => role.name) || []
         })
     } catch (err) {
         console.error('Fetch failed:', err);
