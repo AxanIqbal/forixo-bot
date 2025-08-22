@@ -13,6 +13,35 @@ const client = new Client({
 
 client.once('ready', () => console.log(`Logged in as ${client.user?.tag}`));
 
+client.on('guildMemberAdd', async member => {
+    const role = member.guild.roles.cache.find(e=>e.name.toLowerCase().includes("commander"))
+
+    if (role) {
+        await member.roles.add(role);
+        console.log(`Assigned Commander role to ${member.user.tag}`);
+    } else {
+        console.warn('Commander role not found in this guild.');
+    }
+
+    try {
+        const user = {
+            id: member.id,
+            username: member.user.username,
+            tag: member.user.tag,
+            joinedAt: member.joinedAt?.toISOString(),
+            guildId: member.guild.id,
+            guildName: member.guild.name,
+        }
+
+        await axios.post("https://forixo.app.n8n.cloud/webhook/new-join",{
+            user
+        })
+    } catch (err) {
+        console.error('Fetch failed:', err);
+        return;
+    }
+})
+
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
 
