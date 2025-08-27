@@ -14,13 +14,13 @@ const client = new Client({
 client.once('ready', () => console.log(`Logged in as ${client.user?.tag}`));
 
 client.on('guildMemberAdd', async member => {
-    const role = member.guild.roles.cache.find(e=>e.name.toLowerCase().includes("commander"))
+    const role = member.guild.roles.cache.find(e=>e.name.toLowerCase().includes("army"))
 
     if (role) {
         await member.roles.add(role);
-        console.log(`Assigned Commander role to ${member.user.tag}`);
+        console.log(`Assigned Army role to ${member.user.tag}`);
     } else {
-        console.warn('Commander role not found in this guild.');
+        console.warn('Army role not found in this guild.');
     }
 
     try {
