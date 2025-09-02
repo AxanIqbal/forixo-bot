@@ -53,16 +53,16 @@ client.on('messageCreate', async message => {
 
     // 2️⃣ Check if it's a reply to *your* bot
     let isReplyToOurBot = false;
-    if (message.type === MessageType.Reply && message.reference?.messageId) {
-        try {
-            const replied = await message.fetchReference(); // original message
-            if (replied.author?.id === botId) {
-                isReplyToOurBot = true;
-            }
-        } catch (err) {
-            console.error('Could not fetch replied-to message:', err);
-        }
-    }
+    // if (message.type === MessageType.Reply && message.reference?.messageId) {
+    //     try {
+    //         const replied = await message.fetchReference(); // original message
+    //         if (replied.author?.id === botId) {
+    //             isReplyToOurBot = true;
+    //         }
+    //     } catch (err) {
+    //         console.error('Could not fetch replied-to message:', err);
+    //     }
+    // }
 
     if (!isMentioned && !isReplyToOurBot) return;
 
