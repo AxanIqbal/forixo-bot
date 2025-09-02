@@ -72,6 +72,7 @@ client.on('messageCreate', async message => {
             attachments: message.attachments,
             messageId: message.id,
             channelId: message.channel.id,
+            channelType: message.channel.type,
             guildId: message.guild?.id,
             userId: message.author.id,
             username: message.author.username,
