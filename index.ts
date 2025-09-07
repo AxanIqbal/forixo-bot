@@ -43,6 +43,7 @@ client.on('guildMemberAdd', async member => {
 })
 
 client.on('messageCreate', async message => {
+    // Ignore messages from bots (including self) to prevent loops
     if (message.author.bot) return;
 
     const botId = client.user?.id;
@@ -64,7 +65,7 @@ client.on('messageCreate', async message => {
     //     }
     // }
 
-    console.log(isMentioned, isReplyToOurBot, !isMentioned && !isReplyToOurBot)
+    console.log(isMentioned, isReplyToOurBot, botId, message.mentions, !isMentioned && !isReplyToOurBot,message.content)
 
     if (!isMentioned && !isReplyToOurBot) return;
 
