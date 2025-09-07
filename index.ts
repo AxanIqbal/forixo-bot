@@ -49,7 +49,7 @@ client.on('messageCreate', async message => {
     const botId = client.user?.id;
 
     // 1️⃣ Check if the bot is mentioned
-    const isMentioned = message.mentions.has(botId ?? "");
+    const isMentioned = message.content.includes(`<@${botId}>`);
 
 
     // 2️⃣ Check if it's a reply to *your* bot
@@ -65,7 +65,7 @@ client.on('messageCreate', async message => {
     //     }
     // }
 
-    console.log(isMentioned, isReplyToOurBot, botId, !isMentioned && !isReplyToOurBot, message.content, message.content.includes(`@<${botId}>`))
+    console.log(isMentioned, isReplyToOurBot, botId, !isMentioned && !isReplyToOurBot, message.content, message.mentions.has(botId ?? ""))
 
     if (!isMentioned && !isReplyToOurBot) return;
 
