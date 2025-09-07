@@ -65,7 +65,7 @@ client.on('messageCreate', async message => {
     //     }
     // }
 
-    console.log(isMentioned, isReplyToOurBot, botId, message.mentions, !isMentioned && !isReplyToOurBot,message.content)
+    console.log(isMentioned, isReplyToOurBot, botId, !isMentioned && !isReplyToOurBot, message.content, message.content.includes(`@<${botId}>`))
 
     if (!isMentioned && !isReplyToOurBot) return;
 
