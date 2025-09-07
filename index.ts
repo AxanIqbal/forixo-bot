@@ -64,6 +64,8 @@ client.on('messageCreate', async message => {
     //     }
     // }
 
+    console.log(isMentioned, isReplyToOurBot, !isMentioned && !isReplyToOurBot)
+
     if (!isMentioned && !isReplyToOurBot) return;
 
     try {
